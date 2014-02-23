@@ -1,7 +1,14 @@
-@(message: String)
+@(myForm: play.data.Form[Artist])
 
 @main("DJ Jukebox") {
 
-    <h1>hello world</h1>
+    <script src="@routes.Assets.at("javascripts/index.min.js")" type="text/javascript"></script>
+
+    <ul id="artists"></ul>
+
+    @helper.form(action = routes.Application.addArtist) {
+        @helper.inputText(myForm("name"))
+        <input type="submit"/>
+    }
 
 }
