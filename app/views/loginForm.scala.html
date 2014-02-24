@@ -1,0 +1,19 @@
+@(loginForm: Form[Application.Login])
+
+@implicitFieldConstructor = @{ helper.FieldConstructor(utils.html.twitterBootstrapInput.render) }
+
+@main("DJ Jukebox :: Login") {
+
+    @if(loginForm.hasGlobalErrors) {
+        <p class="error alert alert-error">@loginForm.globalError.message</p>
+    }
+
+    @helper.form(action = routes.Application.login(), 'class -> "form-horizontal") {
+        @helper.inputText(loginForm("emailAddress"), '_label -> "Email Address")
+        @helper.inputPassword(loginForm("password"), '_label -> "Password")
+        <div class="controls">
+            <input type="submit" class="btn btn-primary" value="Login"/>
+        </div>
+    }
+
+}
